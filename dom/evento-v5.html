@@ -20,6 +20,8 @@
         podemos criar uma funcao para ultilizar o metodo prevent com
         event.preventDefault()
     -->
+    <hr>
+    <input type="text" v-on:keyup.enter="exibirAlerta">
 
 </div>
 
@@ -44,6 +46,9 @@
             },
             parar(event) {
                 event.stopPropagation()
+            },
+            exibirAlerta() {
+                alert('Estou te alertando')
             }
         },
     })
