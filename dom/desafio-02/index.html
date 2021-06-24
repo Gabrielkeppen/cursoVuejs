@@ -20,8 +20,8 @@
         quando a tecla for ENTER -->
     <div>
         <h2>3) Recolhendo dados após enter.</h2>
-        <input type="text" v-model="enterValor" v-on:keydown.enter="getText">
-        <p>{{ whithEnter }}</p>
+        <input type="text" v-on:keydown.enter="getText">
+        <p>{{ enterValor }}</p>
     </div>
 </div>
 <script src="app.js"></script>

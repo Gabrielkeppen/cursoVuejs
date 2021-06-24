@@ -2,8 +2,7 @@ new Vue({
     el: '#desafio',
     data: {
         valor: '',
-        enterValor: '',
-        withEnter: ''
+        enterValor: ''
     },
     methods: {
         showAlert() {
@@ -11,9 +10,8 @@ new Vue({
         },
         getText(e) {           
         },
-        afterEnter() {
-            if enterValor != null
-                enterValor = withEnter
+        afterEnter(event) {
+            enterValor = event.target.value
             
         }
     },
