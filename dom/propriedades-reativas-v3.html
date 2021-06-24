@@ -25,6 +25,15 @@
                     'maior ou igual a 5' :  'menor que 5'
             }
         },
+
+        watch: {
+            contador(novo, antigo) {
+                console.log(novo, antigo)
+                setTimeout(() => {
+                    this.contador = 0
+                }, 3000)
+            }
+        },
         methods: {
             aumentar() {
                 this.contador++ 
@@ -32,11 +41,6 @@
             diminuir() {
                 this.contador-- 
             },
-            // resultado() {
-            //     console.log('metodo resultado eh chamado')
-            //     return this.contador >= 5 ?
-            //         'maior ou igual a 5' :  'menor que 5'
-            // }
         }
     })
 
