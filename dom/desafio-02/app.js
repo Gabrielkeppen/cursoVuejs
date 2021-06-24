@@ -11,8 +11,7 @@ new Vue({
         getText(e) {           
         },
         afterEnter(event) {
-            enterValor = event.target.value
-            
+            this.enterValor = event.target.value
         }
     },
 })
