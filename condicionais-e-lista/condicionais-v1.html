@@ -3,7 +3,7 @@
 
 <div id="app">
     <p v-if="logado">Usuário Logado: {{ nome }}</p>
-    <p v-if="!logado">Nenhum Usuário Logado</p>
+    <p v-else>Nenhum Usuário Logado</p>
     <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
 </div>
 
