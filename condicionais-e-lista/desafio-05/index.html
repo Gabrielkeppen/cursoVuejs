@@ -1,24 +1,22 @@
-<script src="https://unpkg.com/vue"></script>
-<script src="app.js"></script>
-
 <div id="desafio">
   <!-- 1) Ligue o botão para alternar a exibição dos dois
     parágrafos. Use ambos v-if e v-show e inspecione os elementos
     para ver a diferença -->
-  <h2>#01</h2>
+  <h3>#01</h3>
   <div>
-    <button>Alternar</button>
-    <p>Você quer me ver ...</p>
-    <p>...ou eu</p>
-    <p>Você quer me ver ...</p>
-    <p>...ou eu</p>
+    <button @click="alternar = !alternar" >Alternar</button>
+    <p v-if="alternar">Você quer me ver ...</p>
+    <p v-else>...ou eu</p>
+
+    <p v-show="alternar == true">Você quer me ver ...</p>
+    <p v-show="alternar == false">...ou eu</p>
   </div>
 
   <!-- 2) Exiba em uma <ul> um array de elementos da sua escolha.
-    Imprima também o índice de cada elemento. -->
-  <h2>#02</h2>
+    Imprima também o índice de cada elemento. --> 
+  <h3>#02</h3>
   <ul>
-    <li></li>
+    <li v-for="(pessoa, i) in array" style="list-style: none;">{{ i }} - {{ pessoa }}</li>
   </ul>
   
   <!-- 3) Imprimir todos os pares de valor-chave do objeto a seguir:
@@ -28,9 +26,9 @@
 			volume: '3'
 		}
     Imprima também o índice de cada item. -->
-  <h2>#03</h2>
+  <h3>#03</h3>
   <ul>
-    <li></li>
+    <li v-for="(info, valor, i) in livro">index: {{ i }}) {{ valor }} - {{ info }}</li>
   </ul>
   
   <!-- 4) Imprima o seguinte objeto (somente os valores) e
@@ -38,13 +36,20 @@
     {
 			id: 10,
 			nome: 'Maria',
-			notas: [7.67, 8.33, 6.98, 9.21]
+			notas: [7.67, 8.33, 6.98, 9.1]2
 		}
     (dica: use v-for e v-if na resolução) -->
-  <h2>#04</h2>
+  <h3>#04</h3>
   <ul>
-    <li>
-    
-    </li>
+    <template  v-for="aluno in alunos">
+      <li v-for="(val, valor) in aluno">
+        <div v-if="typeof val != 'object' ">{{ val }}</div>
+        <div v-else>
+          <span v-for="item in val">{{ item }}<br></span>
+        </div>
+      </li>
+    </template>
   </ul>
 </div>
+<script src="https://unpkg.com/vue"></script>
+<script src="./app.js"></script>
