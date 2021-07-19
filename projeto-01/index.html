@@ -7,6 +7,10 @@
 </head>
 <body>
     <div id="app">
+        <div>
+            
+        </div>
+
         <div v-if="warrior != '' || wizard != '' " class="panel scores">
             <div class="score">
                 <h1>Jogador</h1>
@@ -29,13 +33,16 @@
                 <div>{{ monsterLife }}%</div>
             </div>
         </div>
+
         <div v-if="hasResult" class="panel result" >
            <div v-if="monsterLife == 0" class="win">Vitória</div>
            <div v-else class="lose">Derrota</div>
         </div>
+
         <div v-if="warrior == '' && wizard == '' " class="panel class-text">
             <p>Escolha sua classe</p>
         </div>
+        
         <div class="panel bottons">
             <button 
                 v-if="warrior == '' && wizard == '' " 
@@ -50,7 +57,7 @@
                 Mago
             </button>
             <div class="warrior-attacks" v-if="warrior != '' ">
-                <button class="btn attack">Ataque</button>
+                <button class="btn attack" @click="warriorAttack()">Ataque</button>
                 <button class="btn kick">Chute</button>
                 <button class="btn fury">Furia</button>
             </div>
@@ -60,7 +67,11 @@
                 <button class="btn heal">Curar</button>
             </div>
         </div>
-        <div v-if="warrior != '' || wizard != '' " class="panel logs"></div>
+
+        <div v-if="warrior != '' || wizard != '' " class="panel logs">
+
+        </div>
+
     </div>
     <script src="app.js"></script>
 </body>
