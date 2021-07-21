@@ -7,10 +7,7 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            
-        </div>
-
+        
         <div v-if="warrior != '' || wizard != '' " class="panel scores">
             <div class="score">
                 <h1>Jogador</h1>
@@ -21,6 +18,18 @@
                     </div>
                 </div>
                 <div>{{ playerLife }}%</div>
+                <div v-if="warrior != '' " class="fury-bar">
+                    <div class="fury"
+                        :style="{width: furyBar + '%'}">
+                    </div>
+                </div>
+                <div v-if="warrior != '' " class="texto">Furia</div>
+                <div v-if="wizard != '' " class="mana-bar">
+                    <div class="mana"
+                        :style="{width: manaBar + '%'}">
+                    </div>
+                </div>
+                <div v-if="wizard != '' " class="texto">Mana</div>
             </div>
             <div class="score">
                 <h1>Monstro</h1>
@@ -43,7 +52,7 @@
             <p>Escolha sua classe</p>
         </div>
         
-        <div class="panel bottons">
+        <div v-if="playerLife != 0 && monsterLife != 0 " class="panel bottons">
             <button 
                 v-if="warrior == '' && wizard == '' " 
                 class="btn warrior" 
@@ -56,15 +65,19 @@
                 @click="getWizard">
                 Mago
             </button>
-            <div class="warrior-attacks" v-if="warrior != '' ">
-                <button class="btn attack" @click="warriorAttack()">Ataque</button>
-                <button class="btn kick">Chute</button>
-                <button class="btn fury">Furia</button>
+            <div v-if="warrior != '' " class="warrior-attacks">
+                <button class="btn attack" @click="warriorAttack(); monsterAttack()">Ataque</button>
+                <button v-if="stuned != 1" class="btn kick" @click="warriorKick(); monsterAttack()">Chute</button>
+                <button v-if="furyBar == 100" class="btn fury" @click="warriorFury(); monsterAttack()">Furia</button>
             </div>
-            <div class="wizard-attacks" v-if="wizard != '' ">
-                <button class="btn fire">Bola de Fogo</button>
-                <button class="btn mana">Carregar Mana</button>
-                <button class="btn heal">Curar</button>
+            <div v-if="wizard != '' " class="wizard-attacks">
+                <button v-if="manaBar != 0" class="btn fire" @click="wizardFire(); monsterAttack()">Bola de Fogo</button>
+                <button v-if="manaBar == 0" @click="wizardMana(); monsterAttack()" class="btn mana">Carregar Mana</button>
+                <button v-if="playerLife != 100 && manaBar >= 50" 
+                        class="btn heal" 
+                        @click="wizardHeal(); monsterAttack()">
+                        Curar
+                </button>
             </div>
         </div>
 
