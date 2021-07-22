@@ -5,6 +5,7 @@ new Vue ({
         monsterLife: 100,
         furyBar: 0,
         manaBar: 100,
+        angryBar: 0,
         warrior: "",
         wizard: "",
         stuned: 0,
@@ -63,11 +64,14 @@ new Vue ({
                     this.furyBar = 100
                 }
             }
+            
         },
 
         warriorKick() {
             this.hurt(4, 8, 0, 0)
             this.stuned = 1 
+            this.angryBar = this.angryBar + 0,4
+            this.monsterPlus = this.monsterPlus + 0,4
             if (this.furyBar < 100) {
                 this.furyBar = this.furyBar + 10
                 if (this.furyBar > 100) {
@@ -85,9 +89,8 @@ new Vue ({
         wizardFire() {
             this.hurt(1, 10, this.firePlus, this.firePlus)
             this.manaBar = this.manaBar - 10
-            if (this.firePlus < 14) {
-                this.firePlus = this.firePlus + 2
-            } else {
+            if (this.firePlus < 21) {
+                this.firePlus = this.firePlus + 3
             }
         },
 
@@ -98,22 +101,31 @@ new Vue ({
         wizardHeal() {
             this.manaBar = this.manaBar - 50
             if (this.playerLife <= 75) {
-                this.playerLife = this.playerLife + 25
+                this.playerLife = this.playerLife + 30
             } else {
                 this.playerLife = 100
             }
         },
 
         monsterAttack() {
-            if (this.stuned == 0) {
-                this.getHurt(5, 10, this.monsterPlus, this.monsterPlus)
-            } else {
-
+            if (this.monsterLife != 0) {
+                if (this.stuned == 0) {
+                    this.getHurt(5, 10, this.monsterPlus, this.monsterPlus)
+                }
             }
         },
 
-        setMonsterPlus() {
-
+        setAnger() {
+            if (this.angryBar <= 100) {
+                this.angryBar = this.angryBar + 2
+                this.monsterPlus = this.monsterPlus + 2
+            } else {
+                this.angryBar = 100
+                this.monsterPlus = 100
+            }
+            if (this.monsterLife <= 8) {
+                this.playerLife = 0
+            }
         },
     },
     watch: {

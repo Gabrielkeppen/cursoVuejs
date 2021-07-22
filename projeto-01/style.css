@@ -38,7 +38,7 @@ html {
     font-size: 1.6rem;
 }
 
-.life-bar, .fury-bar, .mana-bar {
+.life-bar, .fury-bar, .mana-bar, .angry-bar {
     width: 80%;
     height: 20px;
     border: 1px solid #AAA;
@@ -63,6 +63,13 @@ html {
     justify-content: center;
     height: 100%;
     background-color: rgb(0, 34, 128);
+}
+
+.angry-bar .angry {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-color:rgb(128, 0, 53)
 }
 
 .life-bar .life.danger {
