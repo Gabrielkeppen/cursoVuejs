@@ -6,11 +6,18 @@
     <h2> {{ modulo }}</h2>
     <button @click="alterarAula()">Aula</button>
     <button @click="alterarModulo()">Módulo</button>
+
+    <comp></comp>
 </div>
 
 <script>
+    Vue.component('comp', {
+        template: '<h1>Componente</h1>'
+    })
+
+
     const vm = new Vue({
-        //el: '#app',
+        el: '#app',
         data: {
             aula: 'Aula: Montando Instância Vue',
             modulo: 'Modulo: Instância Vue',
@@ -24,5 +31,4 @@
             }
         }
     })
-    vm.$mount('#app')
 </script>
