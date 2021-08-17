@@ -12,8 +12,29 @@
 
 <script>
     Vue.component('comp', {
-        template: '<h1>Componente</h1>'
-    })
+        template: `
+        <div>
+            <h1> {{ aula }}</h1>
+            <h2> {{ modulo }}</h2>
+            <button @click="alterarAula()">Aula</button>
+            <button @click="alterarModulo()">Módulo</button>
+        </div>
+        `,
+        data: function () {
+            return {
+                aula: 'Aula: Montando Instância Vue',
+                modulo: 'Modulo: Instância Vue',
+            }
+        },
+        methods: {
+            alterarAula() {
+                this.aula += '#'
+            },
+            alterarModulo() {
+                this.modulo += '#'
+            }
+        }
+    })  
 
 
     const vm = new Vue({
