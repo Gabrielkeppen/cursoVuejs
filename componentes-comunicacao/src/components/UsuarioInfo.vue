@@ -8,10 +8,13 @@
 
 <script>
 export default {
-    props: ['nome'],
+    props: {
+        nome: String
+    },
     methods: {
         inverterNome() {
-            return this.nome.split('').reverse('').join('')
+            return this.nome
+            //return this.nome.split('').reverse('').join('')
         }
     }
 }
