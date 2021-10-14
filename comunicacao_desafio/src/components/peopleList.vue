@@ -8,7 +8,7 @@
                 </tr>
             </thead>
             <tbody>
-                <template v-for="(item, i) in list" :key="i">
+                <template v-for="(item, i) in list" :key="i" @click="selectLine(item)">
                     <tr>
                         <td>
                             {{ item.id }}
@@ -24,7 +24,11 @@
 </template>
 
 <script>
+import Barramento from '@/barramento'
+
 export default ({
+    props: {
+    },
     data() {
         return {
             list: [
@@ -34,6 +38,11 @@ export default ({
                 {id:4, name:"Patricia", age:"42"},
                 {id:5, name:"Silvio", age:"46"},
             ]
+        }
+    },
+    methods: {
+        selectLine(item) {
+            Barramento.$emit('passingLine', item)
         }
     }
 })
