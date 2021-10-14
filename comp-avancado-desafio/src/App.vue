@@ -1,14 +1,14 @@
 <template>
 	<div id="app">
 		<span>
-			<button class="vermelho">Carregar Componente Vermelho</button>
-			<button class="verde">Carregar Componente Verde</button>
-			<button class="azul">Carregar Componente Azul</button>
+			<button class="vermelho" @click="componente='Vermelho'">Vermelho</button>
+			<button class="verde" @click="componente='Verde'">Verde</button>
+			<button class="azul" @click="componente='Azul'">Azul</button>
 		</span>
-		
-		<Vermelho />
-		<Verde />
-		<Azul />
+
+		<component :is="componente">
+			<span>Conteúdo do Componente <strong>{{ this.componente }}</strong></span>
+		</component>
 	</div>
 </template>
 
@@ -20,6 +20,11 @@ import Azul from './components/Azul.vue'
 export default {
 	name: 'app',
 	components: { Vermelho, Verde, Azul },
+	data() {
+		return {
+			componente: 'Vermelho'
+		}
+	}
 }
 </script>
 
